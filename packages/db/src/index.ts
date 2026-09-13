@@ -6,6 +6,9 @@ export {
   member,
   organization,
   session,
+  subscription,
   user,
   verification,
 } from "./schema";
+export { recordSubscription, subscriptionForOrganization, subscriptionForStripeId } from "./subscriptions";
+export type { SubscriptionRecord } from "./subscriptions";

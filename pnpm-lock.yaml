@@ -20,6 +20,9 @@ importers:
       '@seedstack/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@seedstack/stripe':
+        specifier: workspace:*
+        version: link:../../packages/stripe
       '@seedstack/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -102,6 +105,28 @@ importers:
       drizzle-kit:
         specifier: latest
         version: 0.31.10
+      eslint:
+        specifier: ^9.0.0
+        version: 9.39.5(jiti@2.7.0)
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.3
+
+  packages/stripe:
+    dependencies:
+      stripe:
+        specifier: latest
+        version: 22.6.2(@types/node@22.20.2)
+    devDependencies:
+      '@seedstack/config-eslint':
+        specifier: workspace:*
+        version: link:../config-eslint
+      '@seedstack/config-ts':
+        specifier: workspace:*
+        version: link:../config-ts
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.20.2
       eslint:
         specifier: ^9.0.0
         version: 9.39.5(jiti@2.7.0)
@@ -2624,6 +2649,15 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
+  stripe@22.6.2:
+    resolution: {integrity: sha512-PwRE2scocvXqDKPiskMa5vRJEAEkq46W69XyUYmAwrNSLr675lQnfqLwnsndAWizwgihOWw/irLmoFRo3ez7ew==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/node': '>=18'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+
   styled-jsx@5.1.6:
     resolution: {integrity: sha512-qSVyDTeMotdvQYoHWLNGwRFJHC+i+ZvdBRYosOFgC+Wg1vx4frN2/RG/NA7SYqqvKNLf39P2LSRA2pu6n0XYZA==}
     engines: {node: '>= 12.0.0'}
@@ -5053,6 +5087,10 @@ snapshots:
   strip-bom@3.0.0: {}
 
   strip-json-comments@3.1.1: {}
+
+  stripe@22.6.2(@types/node@22.20.2):
+    optionalDependencies:
+      '@types/node': 22.20.2
 
   styled-jsx@5.1.6(react@19.3.0):
     dependencies:

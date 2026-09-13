@@ -95,3 +95,18 @@ export const invitation = pgTable("invitation", {
     .references(() => user.id, { onDelete: "cascade" }),
   ...creationStamp(),
 });
+
+export const subscription = pgTable("subscription", {
+  id: text().primaryKey(),
+  organizationId: text()
+    .notNull()
+    .unique()
+    .references(() => organization.id, { onDelete: "cascade" }),
+  stripeCustomerId: text().notNull(),
+  stripeSubscriptionId: text().notNull().unique(),
+  status: text().notNull(),
+  priceId: text(),
+  currentPeriodEnd: timestamp({ withTimezone: true, mode: "date" }),
+  cancelAtPeriodEnd: boolean().notNull().default(false),
+  ...lifecycle(),
+});

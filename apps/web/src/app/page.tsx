@@ -10,6 +10,9 @@ export default function HomePage() {
           description="Production-ready Next.js SaaS foundation."
         />
         <nav className="mt-8 flex gap-4 text-sm">
+          <Link href="/pricing" className="underline">
+            Pricing
+          </Link>
           <Link href="/login" className="underline">
             Log in
           </Link>
