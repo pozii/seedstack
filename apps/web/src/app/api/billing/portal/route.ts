@@ -2,11 +2,11 @@ import { NextResponse } from "next/server";
 import { isBillingConfigured, stripeClient } from "@seedstack/stripe";
 import { subscriptionForOrganization } from "@seedstack/db";
 import {
-  applicationUrl,
   canManageBilling,
   organizationMembership,
 } from "@/lib/billing";
 import { requireSession } from "@/lib/session";
+import { siteUrl } from "@/lib/site";
 
 export async function POST(request: Request) {
   const session = await requireSession();
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
   }
   const portal = await stripeClient().billingPortal.sessions.create({
     customer: current.stripeCustomerId,
-    return_url: `${applicationUrl()}/dashboard/billing`,
+    return_url: `${siteUrl()}/dashboard/billing`,
   });
   return NextResponse.json({ url: portal.url });
 }

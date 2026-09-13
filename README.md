@@ -1,6 +1,6 @@
 # Seedstack
 
-Production-ready Next.js SaaS foundation. Auth, organizations, Stripe billing, Postgres, SEO-ready. MIT licensed.
+Production-ready Next.js SaaS foundation. Auth, organizations, Stripe billing, Postgres, SEO, and English-first i18n. MIT licensed.
 
 [![CI](https://github.com/pozii/seedstack/actions/workflows/ci.yml/badge.svg)](https://github.com/pozii/seedstack/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/pozii/seedstack/blob/main/LICENSE)
@@ -19,6 +19,8 @@ Clone it, provision Postgres, and you have sign-up, multi-tenant organizations w
 - Protected dashboard routes guarded in server layouts, never in middleware
 - Pricing page, billing dashboard, login, and signup screens out of the box
 - Tailwind CSS v4 with shared shadcn-style UI primitives
+- Metadata API with title templates, Open Graph image, sitemap, robots, and JSON-LD
+- next-intl with English default and locale routing ready for a second language
 - Health endpoint, Docker Compose for local Postgres, GitHub Actions CI with its own database
 - Boots without Stripe or OAuth keys. Billing and social login degrade to clear setup notices
 
@@ -49,6 +51,8 @@ seedstack/
 ├── packages/
 │   ├── db/                   Drizzle schema, client, migrations, subscription sync
 │   ├── stripe/               Plan catalog, Stripe client, webhook verification
+│   ├── seo/                  Metadata and JSON-LD builders
+│   ├── i18n/                 Locale routing and English messages
 │   ├── ui/                   Shared React primitives
 │   ├── config-ts/            Shared TypeScript configs
 │   └── config-eslint/        Shared ESLint base
@@ -68,6 +72,8 @@ Environment files live per app because Next.js loads them from the app directory
 | Database   | Postgres with Drizzle ORM and postgres-js         |
 | Billing    | Stripe SDK with webhook-synced subscriptions      |
 | Styling    | Tailwind CSS v4 with shared UI package            |
+| SEO        | Metadata API, sitemap, robots, JSON-LD, OG image  |
+| i18n       | next-intl, English default, locale routing ready  |
 | Validation | Zod at API boundaries                             |
 | CI         | GitHub Actions with Postgres service              |
 
@@ -95,8 +101,8 @@ pnpm --filter @seedstack/db db:studio     # visual database browser
 - [x] Database package with auth and organization tables
 - [x] Better Auth with protected dashboard and roles
 - [x] Stripe billing with webhook sync and graceful degradation
-- [ ] SEO package with metadata, sitemap, robots, and JSON-LD
-- [ ] Internationalization with English default and locale routing
+- [x] SEO package with metadata, sitemap, robots, and JSON-LD
+- [x] Internationalization with English default and locale routing
 - [ ] Test suite with unit and end-to-end coverage
 - [ ] Documentation site and contribution guides
 

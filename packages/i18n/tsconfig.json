@@ -1,0 +1,1 @@
+{"extends":"@seedstack/config-ts/base.json","compilerOptions":{"noEmit":true},"include":["src"]}

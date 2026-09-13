@@ -33,7 +33,3 @@ export function canManageBilling(role: string) {
 export async function organizationSubscription(organizationId: string) {
   return subscriptionForOrganization(organizationId);
 }
-
-export function applicationUrl() {
-  return process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-}

@@ -2,11 +2,11 @@ import { NextResponse } from "next/server";
 import { billingPlans, isBillingConfigured, stripeClient } from "@seedstack/stripe";
 import { subscriptionForOrganization } from "@seedstack/db";
 import {
-  applicationUrl,
   canManageBilling,
   organizationMembership,
 } from "@/lib/billing";
 import { requireSession } from "@/lib/session";
+import { siteUrl } from "@/lib/site";
 
 export async function POST(request: Request) {
   const session = await requireSession();
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
         metadata: { organizationId: body.organizationId },
       })
     ).id;
-  const appUrl = applicationUrl();
+  const appUrl = siteUrl();
   const checkout = await stripe.checkout.sessions.create({
     mode: "subscription",
     customer: customerId,
