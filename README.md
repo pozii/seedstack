@@ -7,11 +7,15 @@ Production-ready Next.js SaaS foundation. Auth, DB, billing, SEO, i18n-ready.
 ```sh
 pnpm install
 docker compose up -d postgres
-cp .env.example .env
+cp .env.example apps/web/.env
+pnpm --filter @seedstack/db db:migrate
 pnpm dev
 ```
 
 Web runs on http://localhost:3000. Health check: `/api/health`.
+
+Environment files live per app because Next.js loads them from the app
+directory. `.env.example` at the root documents the full shape.
 
 ## Workspaces
 
