@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
-import { billingPlans, isBillingConfigured, stripeClient } from "@seedstack/stripe";
-import { subscriptionForOrganization } from "@seedstack/db";
 import {
-  canManageBilling,
-  organizationMembership,
-} from "@/lib/billing";
+  billingPlans,
+  isBillingConfigured,
+  stripeClient,
+} from "@seedstack/stripe";
+import { subscriptionForOrganization } from "@seedstack/db";
+import { canManageBilling, organizationMembership } from "@/lib/billing";
 import { requireSession } from "@/lib/session";
 import { siteUrl } from "@/lib/site";
 
@@ -17,11 +18,19 @@ export async function POST(request: Request) {
   if (!body.organizationId || !body.priceId) {
     return NextResponse.json({ error: "Missing parameters" }, { status: 400 });
   }
-  const plan = billingPlans().find((candidate) => candidate.priceId === body.priceId);
+  const plan = billingPlans().find(
+    (candidate) => candidate.priceId === body.priceId,
+  );
   if (!plan || !isBillingConfigured()) {
-    return NextResponse.json({ error: "Billing is not configured" }, { status: 503 });
+    return NextResponse.json(
+      { error: "Billing is not configured" },
+      { status: 503 },
+    );
   }
-  const { role } = await organizationMembership(body.organizationId, session.user.id);
+  const { role } = await organizationMembership(
+    body.organizationId,
+    session.user.id,
+  );
   if (!canManageBilling(role)) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }

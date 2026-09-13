@@ -2,7 +2,10 @@ import { headers } from "next/headers";
 import { subscriptionForOrganization } from "@seedstack/db";
 import { billingPlans, isBillingConfigured } from "@seedstack/stripe";
 import { Container, SectionHeading } from "@seedstack/ui";
-import { BillingPanel, type OrganizationBilling } from "@/components/billing-panel";
+import {
+  BillingPanel,
+  type OrganizationBilling,
+} from "@/components/billing-panel";
 import { auth } from "@/lib/auth";
 import { canManageBilling } from "@/lib/billing";
 import { requireSession } from "@/lib/session";
@@ -22,8 +25,8 @@ export default async function BillingPage() {
         headers: requestHeaders,
       });
       const role =
-        full?.members.find((member) => member.userId === session.user.id)?.role ??
-        "member";
+        full?.members.find((member) => member.userId === session.user.id)
+          ?.role ?? "member";
       const current = await subscriptionForOrganization(organization.id);
       return {
         organizationId: organization.id,
@@ -57,7 +60,8 @@ export default async function BillingPage() {
         />
         {!configured ? (
           <p className="mt-8 rounded-md border px-4 py-3 text-sm text-muted-foreground">
-            Billing is not configured yet. Set the Stripe keys to enable checkout.
+            Billing is not configured yet. Set the Stripe keys to enable
+            checkout.
           </p>
         ) : null}
         <BillingPanel items={items} />

@@ -17,7 +17,8 @@ export default function PricingPage() {
         />
         {!configured ? (
           <p className="mt-8 rounded-md border px-4 py-3 text-sm text-muted-foreground">
-            Billing is not configured yet. Set the Stripe keys to enable checkout.
+            Billing is not configured yet. Set the Stripe keys to enable
+            checkout.
           </p>
         ) : null}
         <div className="mt-8 grid gap-4 sm:grid-cols-2">

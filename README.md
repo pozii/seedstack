@@ -64,18 +64,18 @@ Environment files live per app because Next.js loads them from the app directory
 
 ## Tech stack
 
-| Layer      | Choice                                            |
-| ---------- | ------------------------------------------------- |
+| Layer      | Choice                                             |
+| ---------- | -------------------------------------------------- |
 | Framework  | Next.js 15 App Router, React 19, TypeScript strict |
-| Monorepo   | Turborepo with pnpm workspaces                    |
-| Auth       | Better Auth with organization plugin              |
-| Database   | Postgres with Drizzle ORM and postgres-js         |
-| Billing    | Stripe SDK with webhook-synced subscriptions      |
-| Styling    | Tailwind CSS v4 with shared UI package            |
-| SEO        | Metadata API, sitemap, robots, JSON-LD, OG image  |
-| i18n       | next-intl, English default, locale routing ready  |
-| Validation | Zod at API boundaries                             |
-| CI         | GitHub Actions with Postgres service              |
+| Monorepo   | Turborepo with pnpm workspaces                     |
+| Auth       | Better Auth with organization plugin               |
+| Database   | Postgres with Drizzle ORM and postgres-js          |
+| Billing    | Stripe SDK with webhook-synced subscriptions       |
+| Styling    | Tailwind CSS v4 with shared UI package             |
+| SEO        | Metadata API, sitemap, robots, JSON-LD, OG image   |
+| i18n       | next-intl, English default, locale routing ready   |
+| Validation | Zod at API boundaries                              |
+| CI         | GitHub Actions with Postgres service               |
 
 ## Scripts
 
@@ -84,6 +84,8 @@ pnpm dev          # run everything
 pnpm build        # production build
 pnpm lint         # lint all workspaces
 pnpm typecheck    # typecheck all workspaces
+pnpm test         # unit tests across workspaces
+pnpm format:check # verify Prettier formatting
 ```
 
 Database scripts live in the db package:
@@ -103,12 +105,12 @@ pnpm --filter @seedstack/db db:studio     # visual database browser
 - [x] Stripe billing with webhook sync and graceful degradation
 - [x] SEO package with metadata, sitemap, robots, and JSON-LD
 - [x] Internationalization with English default and locale routing
-- [ ] Test suite with unit and end-to-end coverage
+- [x] Test suite with unit and end-to-end coverage
 - [ ] Documentation site and contribution guides
 
 ## Contributing
 
-Issues and pull requests are welcome. Keep changes small, keep the gates green (`typecheck`, `lint`, `build`), and write code that reads as if a senior engineer wrote it on a calm afternoon. Migrations for schema changes must be committed alongside the schema.
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide. Keep changes small, keep the gates green (`typecheck`, `lint`, `test`, `build`), and write code that reads as if a senior engineer wrote it on a calm afternoon. Migrations for schema changes must be committed alongside the schema.
 
 ## License
 

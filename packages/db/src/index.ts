@@ -10,5 +10,9 @@ export {
   user,
   verification,
 } from "./schema";
-export { recordSubscription, subscriptionForOrganization, subscriptionForStripeId } from "./subscriptions";
+export {
+  recordSubscription,
+  subscriptionForOrganization,
+  subscriptionForStripeId,
+} from "./subscriptions";
 export type { SubscriptionRecord } from "./subscriptions";

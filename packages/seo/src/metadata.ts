@@ -6,7 +6,11 @@ export type SiteInfo = {
   description: string;
 };
 
-export function siteMetadata({ baseUrl, name, description }: SiteInfo): Metadata {
+export function siteMetadata({
+  baseUrl,
+  name,
+  description,
+}: SiteInfo): Metadata {
   return {
     metadataBase: new URL(baseUrl),
     title: { default: name, template: `%s | ${name}` },

@@ -75,7 +75,10 @@ async function syncSubscription(source: Stripe.Subscription) {
 
 export async function POST(request: Request) {
   if ((process.env.STRIPE_WEBHOOK_SECRET ?? "").length === 0) {
-    return NextResponse.json({ error: "Billing is not configured" }, { status: 503 });
+    return NextResponse.json(
+      { error: "Billing is not configured" },
+      { status: 503 },
+    );
   }
   const signature = request.headers.get("stripe-signature");
   if (!signature) {
@@ -90,7 +93,9 @@ export async function POST(request: Request) {
   if (event.type === "checkout.session.completed") {
     const checkout = asCheckoutSession(event.data.object);
     const subscriptionId =
-      typeof checkout?.subscription === "string" ? checkout.subscription : undefined;
+      typeof checkout?.subscription === "string"
+        ? checkout.subscription
+        : undefined;
     if (checkout && subscriptionId) {
       const full = await stripeClient().subscriptions.retrieve(subscriptionId);
       await syncSubscription(full);

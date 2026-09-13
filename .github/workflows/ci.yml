@@ -37,5 +37,9 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm typecheck
       - run: pnpm lint
+      - run: pnpm format:check
+      - run: pnpm test
       - run: pnpm --filter @seedstack/db db:migrate
       - run: pnpm build
+      - run: pnpm --filter @seedstack/web exec playwright install --with-deps chromium
+      - run: pnpm --filter @seedstack/web test:e2e

@@ -12,3 +12,5 @@ coverage
 .env.*.local
 *.tsbuildinfo
 .turbo
+playwright-report
+test-results

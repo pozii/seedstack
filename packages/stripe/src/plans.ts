@@ -21,7 +21,12 @@ function planName(id: string) {
 export function billingPlans(): BillingPlan[] {
   return planEntries()
     .filter(([, priceId]) => priceId.length > 0)
-    .map(([id, priceId, interval]) => ({ id, name: planName(id), priceId, interval }));
+    .map(([id, priceId, interval]) => ({
+      id,
+      name: planName(id),
+      priceId,
+      interval,
+    }));
 }
 
 export function isBillingConfigured() {

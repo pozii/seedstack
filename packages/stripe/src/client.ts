@@ -19,5 +19,9 @@ export type { Stripe };
 
 export function constructWebhookEvent(payload: string, signature: string) {
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET ?? "";
-  return stripeClient().webhooks.constructEvent(payload, signature, webhookSecret);
+  return stripeClient().webhooks.constructEvent(
+    payload,
+    signature,
+    webhookSecret,
+  );
 }

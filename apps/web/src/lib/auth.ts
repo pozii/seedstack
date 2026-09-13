@@ -44,7 +44,5 @@ export const auth = betterAuth({
   },
   ...(google ? { socialProviders: { google } } : {}),
   plugins: [organization()],
-  trustedOrigins: [
-    process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
-  ],
+  trustedOrigins: [process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"],
 });

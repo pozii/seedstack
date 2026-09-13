@@ -88,7 +88,9 @@ export function BillingPanel({ items }: { items: OrganizationBilling[] }) {
           {item.subscription?.renewsAt ? (
             <p className="mt-1 text-sm text-muted-foreground">
               Renews {new Date(item.subscription.renewsAt).toLocaleDateString()}
-              {item.subscription.cancelAtPeriodEnd ? " (cancels at period end)" : ""}
+              {item.subscription.cancelAtPeriodEnd
+                ? " (cancels at period end)"
+                : ""}
             </p>
           ) : null}
           {!item.canManage ? (
@@ -99,10 +101,16 @@ export function BillingPanel({ items }: { items: OrganizationBilling[] }) {
             <button
               type="button"
               disabled={pending !== null}
-              onClick={() => run(`portal-${item.organizationId}`, () => requestPortal(item.organizationId))}
+              onClick={() =>
+                run(`portal-${item.organizationId}`, () =>
+                  requestPortal(item.organizationId),
+                )
+              }
               className="mt-4 rounded-md border px-4 py-2 text-sm disabled:opacity-50"
             >
-              {pending === `portal-${item.organizationId}` ? "Opening" : "Manage billing"}
+              {pending === `portal-${item.organizationId}`
+                ? "Opening"
+                : "Manage billing"}
             </button>
           ) : (
             <div className="mt-4 flex flex-wrap gap-2">
@@ -111,10 +119,16 @@ export function BillingPanel({ items }: { items: OrganizationBilling[] }) {
                   key={plan.id}
                   type="button"
                   disabled={pending !== null}
-                  onClick={() => run(`plan-${plan.id}`, () => requestCheckout(item.organizationId, plan.priceId))}
+                  onClick={() =>
+                    run(`plan-${plan.id}`, () =>
+                      requestCheckout(item.organizationId, plan.priceId),
+                    )
+                  }
                   className="rounded-md bg-foreground px-4 py-2 text-sm text-background disabled:opacity-50"
                 >
-                  {pending === `plan-${plan.id}` ? "Redirecting" : `Subscribe ${plan.name}`}
+                  {pending === `plan-${plan.id}`
+                    ? "Redirecting"
+                    : `Subscribe ${plan.name}`}
                 </button>
               ))}
             </div>

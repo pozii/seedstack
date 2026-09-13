@@ -1,1 +1,10 @@
-{"extends":"./base.json","compilerOptions":{"jsx":"preserve","incremental":true,"plugins":[{"name":"next"}],"noEmit":true,"allowJs":true}}
+{
+  "extends": "./base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [{ "name": "next" }],
+    "noEmit": true,
+    "allowJs": true
+  }
+}

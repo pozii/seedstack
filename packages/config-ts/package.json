@@ -1,1 +1,13 @@
-{"name":"@seedstack/config-ts","version":"0.1.0","private":true,"license":"MIT","files":["base.json","next.json"],"publishConfig":{"access":"public"}}
+{
+  "name": "@seedstack/config-ts",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "files": [
+    "base.json",
+    "next.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
