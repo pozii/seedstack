@@ -1,0 +1,14 @@
+# Seedstack - local-only files (never commit these)
+# This .gitignore itself IS committed. Entries below are NOT.
+AGENTS.local.md
+
+node_modules
+.next
+dist
+build
+coverage
+.env
+.env.local
+.env.*.local
+*.tsbuildinfo
+.turbo
